@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "webpack:build-dev": "webpack --mode=development --config=webpack.config.js",
-    "webpack:build": "webpack --mode=production --config=webpack.config.js",
-    "uglify": "npm run webpack:build-dev && uglifyjs --compress dist/uglify.bundle.js --output dist/uglify.bundle.min.js"
+    "webpack:build": "cross-env UGLIFY_BUG_REPORT=1 webpack --mode=production --config=webpack.config.js",
+    "uglify": "npm run webpack:build-dev && cross-env UGLIFY_BUG_REPORT=1 uglifyjs --compress dist/uglify.bundle.js --output dist/uglify.bundle.min.js"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
     "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
     "uglify-js": "^3.12.6",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.46.0",
